@@ -1,13 +1,7 @@
 package terminal;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JTable;
-import javax.swing.UIManager;
-import java.awt.Color;
-import javax.swing.JList;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class Workerview extends JFrame {
 	public Workerview() {

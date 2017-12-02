@@ -1,7 +1,6 @@
 package terminal;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 public class Main extends JFrame {
 
