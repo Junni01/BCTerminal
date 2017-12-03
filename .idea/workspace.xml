@@ -28,8 +28,26 @@
       <file leaf-file-name="TerminaGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="58" column="56" lean-forward="true" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+            <state relative-caret-position="-1176">
+              <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+              <folding>
+                <element signature="class#5003:5681" expanded="false" />
+                <element signature="method#actionPerformed#0;class#5003:5681" expanded="false" />
+                <element signature="class#5971:6079" expanded="false" />
+                <element signature="class#6284:6429" expanded="false" />
+                <element signature="class#6713:6836" expanded="false" />
+                <element signature="class#7013:7156" expanded="false" />
+                <element signature="method#ConfigureConnection#0;class#TerminaGUI#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/terminal/Worker.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -38,16 +56,27 @@
       <file leaf-file-name="DatabaseConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/terminal/DatabaseConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="28" />
+            <state relative-caret-position="694">
+              <caret line="195" column="26" lean-forward="false" selection-start-line="195" selection-start-column="26" selection-end-line="195" selection-end-column="26" />
               <folding>
-                <marker date="1512222907079" expanded="true" signature="1244:1301" ph="SELECT Badge... workers" />
-                <marker date="1512222907079" expanded="true" signature="1361:1403" ph="INSERT INTO workers... " />
-                <marker date="1512222907079" expanded="true" signature="1467:1528" ph="SELECT Proje... project" />
-                <marker date="1512222907079" expanded="true" signature="1589:1639" ph="INSERT INTO project... " />
-                <marker date="1512222907079" expanded="true" signature="1698:1771" ph="SELECT JobID... jobs" />
-                <marker date="1512222907079" expanded="true" signature="1828:1890" ph="INSERT INTO workers... " />
-                <marker date="1512222907079" expanded="true" signature="1948:2090" ph="SELECT worke... workerjob" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#ConnectionSet#0;class#DatabaseConnect#0" expanded="false" />
+                <element signature="method#ConnectionGet#0;class#DatabaseConnect#0" expanded="false" />
+                <element signature="method#getWorkers#0;class#DatabaseConnect#0" expanded="false" />
+                <element signature="method#AdminList#0;class#DatabaseConnect#0" expanded="false" />
+                <element signature="method#getJobs#0;class#DatabaseConnect#0" expanded="false" />
+                <marker date="1512303850974" expanded="true" signature="1264:1321" ph="SELECT Badge... workers" />
+                <marker date="1512303850974" expanded="true" signature="1381:1423" ph="INSERT INTO workers... " />
+                <marker date="1512303850974" expanded="true" signature="1487:1548" ph="SELECT Proje... project" />
+                <marker date="1512303850974" expanded="true" signature="1609:1659" ph="INSERT INTO project... " />
+                <marker date="1512303850974" expanded="true" signature="1718:1791" ph="SELECT JobID... jobs" />
+                <marker date="1512303850974" expanded="true" signature="1718:1810" ph="SELECT JobID... jobs" />
+                <marker date="1512303850974" expanded="true" signature="1867:1929" ph="INSERT INTO workers... " />
+                <marker date="1512303850974" expanded="true" signature="1987:2036" ph="UPDATE jobs " />
+                <marker date="1512303850974" expanded="true" signature="2092:2153" ph="UPDATE jobs " />
+                <marker date="1512303850974" expanded="true" signature="2210:2253" ph="UPDATE jobs " />
+                <marker date="1512303850974" expanded="true" signature="2307:2368" ph="UPDATE jobs " />
+                <marker date="1512303850974" expanded="true" signature="2428:2570" ph="SELECT worke... workerjob" />
               </folding>
             </state>
           </provider>
@@ -77,6 +106,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java" />
+        <option value="$PROJECT_DIR$/src/terminal/DatabaseConnect.java" />
         <option value="$PROJECT_DIR$/src/terminal/TerminaGUI.java" />
       </list>
     </option>
@@ -88,9 +118,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
+    <option name="x" value="6" />
     <option name="y" value="10" />
-    <option name="width" value="1936" />
+    <option name="width" value="1932" />
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
@@ -108,6 +138,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,10 +164,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -408,30 +438,31 @@
       <workItem from="1510736097593" duration="240000" />
       <workItem from="1510737792145" duration="962000" />
       <workItem from="1512224244721" duration="2587000" />
+      <workItem from="1512291010998" duration="4557000" />
+      <workItem from="1512298451505" duration="5492000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3803000" />
+    <option name="totallyTimeSpent" value="13852000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="10" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="6" y="10" width="1932" height="1056" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32944915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1154661" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10911017" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15729167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15762004" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -456,18 +487,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -478,73 +503,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/DatabaseConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminal/Workerview.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/DatabaseConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminal/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="2618">
+          <caret line="154" column="20" lean-forward="true" selection-start-line="154" selection-start-column="20" selection-end-line="154" selection-end-column="20" />
+          <folding>
+            <element signature="class#5003:5681" expanded="false" />
+            <element signature="method#actionPerformed#0;class#5003:5681" expanded="false" />
+            <element signature="class#5971:6079" expanded="false" />
+            <element signature="class#6284:6429" expanded="false" />
+            <element signature="class#6713:6836" expanded="false" />
+            <element signature="class#7013:7156" expanded="false" />
+            <element signature="method#ConfigureConnection#0;class#TerminaGUI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -558,25 +527,193 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/DatabaseConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="901">
+          <caret line="159" column="49" lean-forward="false" selection-start-line="159" selection-start-column="49" selection-end-line="159" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ConnectionSet#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#ConnectionGet#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#getWorkers#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#AdminList#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#getJobs#0;class#DatabaseConnect#0" expanded="false" />
+            <marker date="1512303850974" expanded="true" signature="1264:1321" ph="SELECT Badge... workers" />
+            <marker date="1512303850974" expanded="true" signature="1381:1423" ph="INSERT INTO workers... " />
+            <marker date="1512303850974" expanded="true" signature="1487:1548" ph="SELECT Proje... project" />
+            <marker date="1512303850974" expanded="true" signature="1609:1659" ph="INSERT INTO project... " />
+            <marker date="1512303850974" expanded="true" signature="1718:1791" ph="SELECT JobID... jobs" />
+            <marker date="1512303850974" expanded="true" signature="1718:1810" ph="SELECT JobID... jobs" />
+            <marker date="1512303850974" expanded="true" signature="1867:1929" ph="INSERT INTO workers... " />
+            <marker date="1512303850974" expanded="true" signature="1987:2036" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2092:2153" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2210:2253" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2307:2368" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2428:2570" ph="SELECT worke... workerjob" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/DatabaseConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
           <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="11" selection-end-line="66" selection-end-column="28" />
           <folding>
-            <marker date="1512222907079" expanded="true" signature="1244:1301" ph="SELECT Badge... workers" />
-            <marker date="1512222907079" expanded="true" signature="1361:1403" ph="INSERT INTO workers... " />
-            <marker date="1512222907079" expanded="true" signature="1467:1528" ph="SELECT Proje... project" />
-            <marker date="1512222907079" expanded="true" signature="1589:1639" ph="INSERT INTO project... " />
-            <marker date="1512222907079" expanded="true" signature="1698:1771" ph="SELECT JobID... jobs" />
-            <marker date="1512222907079" expanded="true" signature="1828:1890" ph="INSERT INTO workers... " />
-            <marker date="1512222907079" expanded="true" signature="1948:2090" ph="SELECT worke... workerjob" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#ConnectionSet#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#ConnectionGet#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#getWorkers#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#AdminList#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#getJobs#0;class#DatabaseConnect#0" expanded="false" />
+            <marker date="1512303850974" expanded="true" signature="1264:1321" ph="SELECT Badge... workers" />
+            <marker date="1512303850974" expanded="true" signature="1381:1423" ph="INSERT INTO workers... " />
+            <marker date="1512303850974" expanded="true" signature="1487:1548" ph="SELECT Proje... project" />
+            <marker date="1512303850974" expanded="true" signature="1609:1659" ph="INSERT INTO project... " />
+            <marker date="1512303850974" expanded="true" signature="1718:1791" ph="SELECT JobID... jobs" />
+            <marker date="1512303850974" expanded="true" signature="1718:1810" ph="SELECT JobID... jobs" />
+            <marker date="1512303850974" expanded="true" signature="1867:1929" ph="INSERT INTO workers... " />
+            <marker date="1512303850974" expanded="true" signature="1987:2036" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2092:2153" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2210:2253" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2307:2368" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2428:2570" ph="SELECT worke... workerjob" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/Workerview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="58" column="56" lean-forward="true" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
+          <folding>
+            <element signature="class#5003:5681" expanded="false" />
+            <element signature="method#actionPerformed#0;class#5003:5681" expanded="false" />
+            <element signature="class#5971:6079" expanded="false" />
+            <element signature="class#6284:6429" expanded="false" />
+            <element signature="class#6713:6836" expanded="false" />
+            <element signature="class#7013:7156" expanded="false" />
+            <element signature="method#ConfigureConnection#0;class#TerminaGUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="class#5003:5681" expanded="false" />
+            <element signature="method#actionPerformed#0;class#5003:5681" expanded="false" />
+            <element signature="class#5971:6079" expanded="false" />
+            <element signature="class#6284:6429" expanded="false" />
+            <element signature="class#6713:6836" expanded="false" />
+            <element signature="class#7013:7156" expanded="false" />
+            <element signature="method#ConfigureConnection#0;class#TerminaGUI#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/DatabaseConnect.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminal/Workerview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/DatabaseConnect.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminalCommandLine/BCTerminalMain.java" />
+    <entry file="file://$PROJECT_DIR$/src/terminal/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/Workerview.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/Worker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/DatabaseConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="694">
+          <caret line="195" column="26" lean-forward="false" selection-start-line="195" selection-start-column="26" selection-end-line="195" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ConnectionSet#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#ConnectionGet#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#getWorkers#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#AdminList#0;class#DatabaseConnect#0" expanded="false" />
+            <element signature="method#getJobs#0;class#DatabaseConnect#0" expanded="false" />
+            <marker date="1512303850974" expanded="true" signature="1264:1321" ph="SELECT Badge... workers" />
+            <marker date="1512303850974" expanded="true" signature="1381:1423" ph="INSERT INTO workers... " />
+            <marker date="1512303850974" expanded="true" signature="1487:1548" ph="SELECT Proje... project" />
+            <marker date="1512303850974" expanded="true" signature="1609:1659" ph="INSERT INTO project... " />
+            <marker date="1512303850974" expanded="true" signature="1718:1791" ph="SELECT JobID... jobs" />
+            <marker date="1512303850974" expanded="true" signature="1718:1810" ph="SELECT JobID... jobs" />
+            <marker date="1512303850974" expanded="true" signature="1867:1929" ph="INSERT INTO workers... " />
+            <marker date="1512303850974" expanded="true" signature="1987:2036" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2092:2153" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2210:2253" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2307:2368" ph="UPDATE jobs " />
+            <marker date="1512303850974" expanded="true" signature="2428:2570" ph="SELECT worke... workerjob" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="58" column="56" lean-forward="true" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
-          <folding />
+        <state relative-caret-position="-1176">
+          <caret line="114" column="49" lean-forward="true" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="49" />
+          <folding>
+            <element signature="class#5003:5681" expanded="false" />
+            <element signature="method#actionPerformed#0;class#5003:5681" expanded="false" />
+            <element signature="class#5971:6079" expanded="false" />
+            <element signature="class#6284:6429" expanded="false" />
+            <element signature="class#6713:6836" expanded="false" />
+            <element signature="class#7013:7156" expanded="false" />
+            <element signature="method#ConfigureConnection#0;class#TerminaGUI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

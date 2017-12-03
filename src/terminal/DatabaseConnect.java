@@ -29,9 +29,10 @@ public class DatabaseConnect {
     private PreparedStatement selectJobs = null;
     private PreparedStatement insertJob = null;
     private PreparedStatement showJobs = null;
-    private PreparedStatement startJob = null;
-    private PreparedStatement endJob = null;
-    private PreparedStatement pauseJob = null;
+    private PreparedStatement startJob;
+    private PreparedStatement pauseJob;
+    private PreparedStatement resumeJob;
+    private PreparedStatement endJob;
 
     private PreparedStatement findWorker = null;
 
@@ -49,8 +50,16 @@ public class DatabaseConnect {
             selectProjects = connection.prepareStatement("SELECT ProjectID, ProjName, TotalHours, Finished FROM project");
             insertProject = connection.prepareStatement("INSERT INTO project VALUES (NULL ,?,0,0,NULL,NULL)");
 
-            selectJobs = connection.prepareStatement("SELECT JobID, JobName, TotalTime, OnHoldTime, Paused, Finished  FROM jobs");
+            selectJobs = connection.prepareStatement("SELECT JobID, JobName, TotalTime, OnHoldTime, Paused, Finished  FROM jobs WHERE Finished = 0");
             insertJob = connection.prepareStatement("INSERT INTO workers VALUES (NULL ,?,0,0,0,0, NULL, NULL, NULL)");
+
+
+            startJob = connection.prepareStatement("UPDATE jobs SET StartTime = NOW() WHERE JobID = ?");
+            pauseJob = connection.prepareStatement("UPDATE jobs SET Paused = 1, PauseTime = NOW() WHERE JobID = ?");
+            resumeJob = connection.prepareStatement("UPDATE jobs SET Paused = 0  WHERE JobID = ?");
+            endJob = connection.prepareStatement("UPDATE jobs SET EndTime = NOW(), Finished = 1 WHERE JobID = ?");
+
+
 
             showJobs =  connection.prepareStatement("SELECT workerjob.JobID, jobs.Jobname, workerjob.WorkerID FROM workerjob INNER JOIN jobs ON workerjob.JobID = jobs.JobName WHERE Finished = '0'");
 
@@ -63,7 +72,33 @@ public class DatabaseConnect {
             System.exit(1);
         }
     }
-    
+
+
+    public boolean ConnectionSet(String URL, String USERNAME, String PASSWORD) {   // This is functionality for changing the database server credentials and URL, but I'm keeping the default information as Final so at the moment it can't be changed.
+
+     /* These are commented out since the variables are Final and cannot be changed in this version.
+        when this is implemented it would be beneficial to run some kind of test connection to make sure the credentials are functional.
+
+        this.URL = URL;
+        this.USERNAME = USERNAME;
+        this.PASSWORD = PASSWORD;
+
+    */
+
+    return true; // Better keep it this way for now.
+
+
+    }
+
+    public String ConnectionGet() {
+
+        return "Url: " + URL + "\n" + "Useranme: *********\n" + "Password: *******";
+
+
+    }
+
+
+
     public ArrayList<Worker> getWorkers() {
         ArrayList<Worker> results = null;
         ResultSet resultSet = null;
@@ -130,8 +165,51 @@ public class DatabaseConnect {
         return results;
     }
 
+    public boolean updateJobsStatus(String JobID, int action) {
 
-    public ArrayList<Job> getJobs() {
+        try {
+
+
+            switch (action) {
+
+                case 0:
+
+                    startJob.setString(1, JobID);
+                    startJob.executeUpdate();
+                    break;
+
+                case 1:
+
+                    pauseJob.setString(1, JobID);
+                    pauseJob.executeUpdate();
+                    break;
+
+                case 2:
+
+                    resumeJob.setString(1, JobID);
+                    resumeJob.executeUpdate();
+                    break;
+                case 3:
+
+                    endJob.setString(1, JobID);
+                    endJob.executeUpdate();
+                    break;
+            }
+
+
+            return true;
+
+        } catch (SQLException sqlException) {
+
+            sqlException.printStackTrace();
+
+        }
+        return true;
+    }
+
+
+
+    public ArrayList<Job> getJobs(int currentWorkerID) {
         ArrayList<Job> results = null;
         ResultSet resultSet = null;
 
