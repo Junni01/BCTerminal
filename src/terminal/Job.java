@@ -1,5 +1,6 @@
 package terminal;
 
+
 public class Job {
 
     private int jobId;

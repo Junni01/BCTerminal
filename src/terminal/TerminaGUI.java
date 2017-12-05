@@ -12,10 +12,13 @@ public class TerminaGUI extends JFrame {
 	private JTextField idField;
 	private JTable JobTable;
 	
-	private static DatabaseConnect databaseConnect; 
+	private static DatabaseConnect databaseConnect;
 	
-	private JTable onGoingProjects;
+	private static JTable onGoingProjects;
 	DefaultTableModel tableModel;
+	DefaultTableModel tableModel2;
+
+	
 	private JPanel LoginScreen; // These are the three screens that are available in the program
 	private JPanel WorkerScreen;
 	private JPanel AdminView; // Adminview panel where the user can check total hours in projects 
@@ -26,11 +29,19 @@ public class TerminaGUI extends JFrame {
 	
 	private static ArrayList<Job> jobList;
 	private static Job currentJob;
+
+	private static ArrayList<Project> projectList;
+	private static Project currentProject;
+
 	
 	private static final int ID = 0;
 	private static final int NAME = 1;
+    private static final int TOTALHOURS= 2;
+    private static final int STARTTIME = 3;
 	private static final int COL_COUNT = 2;
-	private JTable endedProjects;
+    private static final int PROJCOL_COUNT = 6;
+
+	private static JTable endedProjects;
 	
 	
 	
@@ -71,11 +82,23 @@ public class TerminaGUI extends JFrame {
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 33));
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		onGoingProjects = new JTable();
+		onGoingProjects.setBounds(10, 11, 414, 400);
+		tableModel2 = new DefaultTableModel(
+				new Object[10][PROJCOL_COUNT],
+				new String[] {
+					"ID", "Name", "Total Hours", "Start Time", "End Time", "Finished"
+				}
+			);
+			onGoingProjects.setModel(tableModel2);
+		AdminView.add(onGoingProjects);
+
+
 		JobTable = new JTable();
 		JobTable.setShowGrid(false);
 		JobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		JobTable.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		JobTable.setBounds(15, 48, 400, 293);
+		JobTable.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JobTable.setBounds(15, 11, 400, 330);
 		tableModel = new DefaultTableModel(
 			new Object[10][COL_COUNT],
 			new String[] {
@@ -107,14 +130,14 @@ public class TerminaGUI extends JFrame {
                 String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
                 databaseConnect.updateJobsStatus(selectedJob, 1);
                 updateJobTable(currentWorker);
-				
-			
+
+
 			}
 		});
 		btnPauseJob.setFont(new Font("Tahoma", Font.BOLD, 25));
 		btnPauseJob.setBounds(223, 361, 192, 64);
 		WorkerScreen.add(btnPauseJob);
-		
+
 		JButton btnResumeJob = new JButton("Resume Job");
 		btnResumeJob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -153,6 +176,7 @@ public class TerminaGUI extends JFrame {
 				int idnumber = Integer.parseInt(idField.getText());
 				
 				if (idnumber == 000) { // 000 id number activates the admin's view
+					updateProjectTable();
 					LoginScreen.setVisible(false);
 					AdminView.setVisible(true);
 					
@@ -188,9 +212,7 @@ public class TerminaGUI extends JFrame {
 			}
 		});
 	
-		onGoingProjects = new JTable();
-		onGoingProjects.setBounds(10, 182, 414, -170);
-		AdminView.add(onGoingProjects);
+
 		
 		JButton btnLogOut = new JButton("Log out");
 		btnLogOut.addActionListener(new ActionListener() {
@@ -199,21 +221,20 @@ public class TerminaGUI extends JFrame {
 				AdminView.setVisible(false);
 			}
 		});
-		btnLogOut.setBounds(289, 485, 126, 44);
+		btnLogOut.setBounds(289, 428, 126, 44);
 		AdminView.add(btnLogOut);
 		
-		endedProjects = new JTable();
-		endedProjects.setBounds(10, 439, 405, -170);
-		AdminView.add(endedProjects);
+
 		
 		JButton btnNewButton_2 = new JButton("Add project");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Add new projects from admin view
-				
+				addProject();
+				updateProjectTable();
 			}
 		});
-		btnNewButton_2.setBounds(10, 485, 131, 44);
+		btnNewButton_2.setBounds(10, 428, 131, 44);
 		AdminView.add(btnNewButton_2);
 		
 		JButton btnEndProject = new JButton("End project");
@@ -221,13 +242,31 @@ public class TerminaGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				// End selected project from admin view.
-				
+
+                String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
+                databaseConnect.endProject(selectedProject);
+                updateProjectTable();
 				
 				
 			}
 		});
-		btnEndProject.setBounds(151, 485, 131, 44);
+		btnEndProject.setBounds(10, 485, 131, 44);
 		AdminView.add(btnEndProject);
+		
+		JButton btnDeleteProject = new JButton("Delete project");
+		btnDeleteProject.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+
+                String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
+                databaseConnect.deleteProject(selectedProject);
+                updateProjectTable();
+				
+				
+			}
+		});
+		btnDeleteProject.setBounds(151, 428, 131, 44);
+		AdminView.add(btnDeleteProject);
 	}
 
 
@@ -274,6 +313,60 @@ public class TerminaGUI extends JFrame {
 		
 	}
 
+
+
+
+
+
+	private void updateProjectTable() {
+
+		projectList = databaseConnect.getProjects();
+		tableModel2.setRowCount(projectList.size());
+		for (int row=0; row<projectList.size(); row++) {
+            currentProject = projectList.get(row);
+
+
+
+                onGoingProjects.getModel().setValueAt(currentProject.getProjectId(), row, 0);
+                onGoingProjects.getModel().setValueAt(currentProject.getProjectName(), row, 1);
+                onGoingProjects.getModel().setValueAt(currentProject.getProjectTotalHours(), row, 2);
+                onGoingProjects.getModel().setValueAt(currentProject.getProjectStartTime(), row, 3);
+                onGoingProjects.getModel().setValueAt(currentProject.getProjectEndTime(), row, 4);
+
+                if (currentProject.getProjectFinishedStatus() == true) {
+                    onGoingProjects.getModel().setValueAt("Finished", row, 5);
+                } else {
+                    onGoingProjects.getModel().setValueAt("Ongoing", row, 5);
+                }
+
+
+
+        }
+
+
+	}
+
+	private void addProject() {
+        JTextField nameField = new JTextField(10);
+        JPanel myPanel = new JPanel();
+
+        myPanel.add(new JLabel("New project name:"));
+        myPanel.add(nameField);
+
+        int result = JOptionPane.showConfirmDialog(null, myPanel, "Add a new project", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result == JOptionPane.OK_OPTION) {
+            if(databaseConnect.addProject(nameField.getText())) {
+                JOptionPane.showMessageDialog(null, "New project added", "Info", JOptionPane.INFORMATION_MESSAGE);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Project not added!", "Info", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+        }
+
+    }
+
 	private void ConfigureConnection(){ // This method only asks for the credentials but does not change them, implemented in a future version.
 		JTextField URLfield = new JTextField(10);
 		JTextField USERNAMEfield = new JTextField(10);
@@ -303,21 +396,4 @@ public class TerminaGUI extends JFrame {
 			}
 		}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

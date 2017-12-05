@@ -2,6 +2,8 @@ package terminal;
 
 
 
+
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,6 +35,8 @@ public class DatabaseConnect {
     private PreparedStatement pauseJob;
     private PreparedStatement resumeJob;
     private PreparedStatement endJob;
+    private PreparedStatement deleteProject;
+    private PreparedStatement endProject;
 
     private PreparedStatement findWorker = null;
 
@@ -47,8 +51,10 @@ public class DatabaseConnect {
             insertWorker = connection.prepareStatement("INSERT INTO workers VALUES (NULL ,?,?,0,?)");
 
 
-            selectProjects = connection.prepareStatement("SELECT ProjectID, ProjName, TotalHours, Finished FROM project");
-            insertProject = connection.prepareStatement("INSERT INTO project VALUES (NULL ,?,0,0,NULL,NULL)");
+            selectProjects = connection.prepareStatement("SELECT ProjectID, ProjName, TotalHours, Finished, StartTime, EndTime FROM project");
+            insertProject = connection.prepareStatement("INSERT INTO project VALUES (NULL ,?,0,0,NOW(),NULL)");
+            deleteProject = connection.prepareStatement("DELETE FROM project WHERE ProjectID = ?");
+            endProject  = connection.prepareStatement("UPDATE project SET EndTime = NOW(), Finished = 1 WHERE ProjectID = ?");
 
             selectJobs = connection.prepareStatement("SELECT JobID, JobName, TotalTime, OnHoldTime, Paused, Finished  FROM jobs WHERE Finished = 0");
             insertJob = connection.prepareStatement("INSERT INTO workers VALUES (NULL ,?,0,0,0,0, NULL, NULL, NULL)");
@@ -242,6 +248,84 @@ public class DatabaseConnect {
         return results;
     }
 
+
+    public ArrayList<Project> getProjects() {
+        ArrayList<Project> results = null;
+        ResultSet resultSet = null;
+
+        try
+        {
+            resultSet = selectProjects.executeQuery();
+            results = new ArrayList<Project>();
+
+            while(resultSet.next())
+            {
+                results.add(new Project(resultSet.getInt("ProjectID"), resultSet.getString("ProjName"), resultSet.getInt("TotalHours"), resultSet.getBoolean("finished"), resultSet.getString("StartTime"), resultSet.getString("EndTime")));
+            }
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                resultSet.close();
+            }
+            catch (SQLException sqlException)
+            {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return results;
+    }
+
+    public boolean addProject(String projectName)
+    {
+        try
+        {
+            insertProject.setString(1, projectName);
+
+            int result = insertProject.executeUpdate();
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+        return true;
+    }
+
+    public void deleteProject(String projectId)
+    {
+        try
+        {
+            deleteProject.setString(1, projectId);
+
+            int result = deleteProject.executeUpdate();
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+    }
+
+
+    public void endProject(String projectId)
+    {
+        try
+        {
+            endProject.setString(1, projectId);
+
+            int result = endProject.executeUpdate();
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+    }
+
 }
 
 
@@ -264,20 +348,8 @@ public class DatabaseConnect {
         }
     }
 
-    public void addProject(String projectName)
-    {
-        try
-        {
-            insertProject.setString(1, projectName);
-
-            int result = insertProject.executeUpdate();
-        }
-        catch (SQLException sqlException)
-        {
-            sqlException.printStackTrace();
-        }
-    }
-
+   */
+/*
     public void addJob(String jobName)
     {
         try

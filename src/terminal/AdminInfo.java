@@ -1,5 +1,7 @@
 package terminal;
 
+
+
 public class AdminInfo {
 
     private int projectId;
