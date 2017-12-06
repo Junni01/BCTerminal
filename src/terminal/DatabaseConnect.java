@@ -40,7 +40,9 @@ public class DatabaseConnect {
     private PreparedStatement selectAssociatedProject;
     private PreparedStatement findWorker = null;
     private PreparedStatement getjobStatus = null;
-
+    private PreparedStatement getSpentHours = null;
+    private PreparedStatement getPauseMinutes = null;
+    private PreparedStatement selectJobsAdmin= null;
 
     public DatabaseConnect() {
     	
@@ -59,7 +61,12 @@ public class DatabaseConnect {
             endProject  = connection.prepareStatement("UPDATE project SET EndTime = NOW(), Finished = 1 WHERE ProjectID = ?");
 
             selectJobs = connection.prepareStatement("SELECT JobID, JobName, TotalTime, OnHoldTime, Paused, Finished, StartTime  FROM jobs WHERE Finished = 0");
+            selectJobsAdmin = connection.prepareStatement("SELECT JobID, JobName, TotalTime, OnHoldTime, Paused, Finished, StartTime  FROM jobs");
+            
+            
             getjobStatus = connection.prepareStatement("SELECT JobID, Paused, Finished, StartTime FROM JOBS WHERE JobID = ?");
+            getSpentHours = connection.prepareStatement("SELECT TIMESTAMPDIFF(MINUTE,(jobs.StartTime),(jobs.EndTime)) AS HOURS FROM jobs WHERE JobID = ?");
+            getPauseMinutes = connection.prepareStatement("SELECT TIMESTAMPDIFF(MINUTE,(jobs.PauseTime),(NOW())) FROM jobs WHERE JobID = ?;");
 
 
 
@@ -67,13 +74,14 @@ public class DatabaseConnect {
 
             selectAssociatedProject = connection.prepareStatement("SELECT project.ProjName FROM projectjob INNER JOIN project ON projectjob.ProjectID = project.ProjectID WHERE JobID = ?");
 
+
             insertJob = connection.prepareStatement("INSERT INTO workers VALUES (NULL ,?,0,0,0,0, NULL, NULL, NULL)");
 
 
             startJob = connection.prepareStatement("UPDATE jobs SET StartTime = NOW() WHERE JobID = ?");
             pauseJob = connection.prepareStatement("UPDATE jobs SET Paused = 1, PauseTime = NOW() WHERE JobID = ?");
-            resumeJob = connection.prepareStatement("UPDATE jobs SET Paused = 0  WHERE JobID = ?");
-            endJob = connection.prepareStatement("UPDATE jobs SET EndTime = NOW(), Finished = 1 WHERE JobID = ?");
+            resumeJob = connection.prepareStatement("UPDATE jobs SET Paused = 0, OnHoldTime = OnHoldTime + TIMESTAMPDIFF(MINUTE,(jobs.PauseTime),(NOW())) WHERE JobID = ?");
+            endJob = connection.prepareStatement("UPDATE jobs SET EndTime = NOW(), Finished = 1, TotalTime = OnHoldTime + TIMESTAMPDIFF(MINUTE,(jobs.StartTime),(jobs.EndTime)) WHERE JobID = ?");
 
 
 
@@ -287,6 +295,40 @@ public class DatabaseConnect {
 
         return results;
     }
+    
+    public ArrayList<Job> getJobsAdmin() {  // This method gathers the job data to an array list to use on the admin view which displays all jobs.
+        ArrayList<Job> results = null;
+        ResultSet resultSet = null;
+
+        try
+        {
+            resultSet = selectJobsAdmin.executeQuery();
+            results = new ArrayList<Job>();
+
+            while(resultSet.next())
+            {
+                results.add(new Job( resultSet.getInt("JobID"), resultSet.getString("JobName"), resultSet.getInt("TotalTime"), resultSet.getInt("OnHoldTime"), resultSet.getBoolean("Paused"), resultSet.getBoolean("Finished"), resultSet.getString("StartTime")));
+            }
+        }
+        catch (SQLException sqlException)
+        {
+            sqlException.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                resultSet.close();
+            }
+            catch (SQLException sqlException)
+            {
+                sqlException.printStackTrace();
+            }
+        }
+
+        return results;
+    }
+    
 
 
     public ArrayList<Project> getProjects() {  // This one gathers data on the projects from the database, similiar to the one that accesses job and worker data.

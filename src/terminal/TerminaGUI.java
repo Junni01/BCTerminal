@@ -17,6 +17,7 @@ public class TerminaGUI extends JFrame {
 	private static JTable onGoingProjects;
 	DefaultTableModel tableModel;
 	DefaultTableModel tableModel2;
+	DefaultTableModel tableModel3;
 
 	
 	private JPanel LoginScreen; // These are the three screens that are available in the program
@@ -37,6 +38,7 @@ public class TerminaGUI extends JFrame {
 
 	private static final int COL_COUNT = 5; // These variables hold the amount of columns for the job and projects tables
     private static final int PROJCOL_COUNT = 6;
+    private JTable AdminJobs;
 	
 	
 	
@@ -79,7 +81,7 @@ public class TerminaGUI extends JFrame {
 		
 		onGoingProjects = new JTable();   // This is table that is shown in the admin view which contains information about projects.
 		onGoingProjects.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		onGoingProjects.setBounds(10, 71, 759, 340);
+		onGoingProjects.setBounds(10, 39, 759, 160);
 		tableModel2 = new DefaultTableModel(
 				new Object[10][PROJCOL_COUNT],
 				new String[] {
@@ -95,6 +97,7 @@ public class TerminaGUI extends JFrame {
 		onGoingProjects.getColumnModel().getColumn(3).setPreferredWidth(120);
 		onGoingProjects.getColumnModel().getColumn(4).setPreferredWidth(120);
 		onGoingProjects.getColumnModel().getColumn(5).setPreferredWidth(20);
+		onGoingProjects.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 		
 		
 		
@@ -202,6 +205,33 @@ public class TerminaGUI extends JFrame {
 		WorkerScreen.add(lblNewLabel);
 		
 		
+		AdminJobs = new JTable();
+		AdminJobs.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		AdminJobs.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		AdminJobs.setBounds(10, 229, 759, 219);
+		
+		tableModel3 = new DefaultTableModel(
+				new Object[10][5],
+				new String[] {
+					"ID", "Name", "Total Time", "StartTime", "End Time"
+				}
+			);
+		AdminJobs.setModel(tableModel3);
+		AdminJobs.getColumnModel().getColumn(0).setPreferredWidth(10);
+		AdminJobs.getColumnModel().getColumn(1).setPreferredWidth(120);
+		AdminJobs.getColumnModel().getColumn(2).setPreferredWidth(20);
+		AdminJobs.getColumnModel().getColumn(3).setPreferredWidth(120);
+		AdminJobs.getColumnModel().getColumn(4).setPreferredWidth(140);
+		AdminJobs.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+		
+
+
+		
+		AdminView.add(AdminJobs);
+		
+		
+		
+		
 				JobTable = new JTable();
 				JobTable.setFillsViewportHeight(true);
 				JobTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -254,6 +284,7 @@ public class TerminaGUI extends JFrame {
 
 				if (idnumber == 000) { // 000 id number activates the admin's view
 					updateProjectTable();
+					updateAdminJobTable();
 					LoginScreen.setVisible(false);
 					AdminView.setVisible(true);
 
@@ -368,33 +399,60 @@ public class TerminaGUI extends JFrame {
 		
 		JLabel lblNewLabel_1 = new JLabel("ID");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(10, 42, 28, 27);
+		lblNewLabel_1.setBounds(10, 11, 28, 27);
 		AdminView.add(lblNewLabel_1);
 		
 		JLabel lblProjectName = new JLabel("Project Name");
 		lblProjectName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblProjectName.setBounds(80, 42, 164, 27);
+		lblProjectName.setBounds(83, 11, 164, 27);
 		AdminView.add(lblProjectName);
 		
 		JLabel lblTotalHours = new JLabel("Total hours");
 		lblTotalHours.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTotalHours.setBounds(261, 42, 79, 27);
+		lblTotalHours.setBounds(261, 11, 79, 27);
 		AdminView.add(lblTotalHours);
 		
 		JLabel lblStartTime = new JLabel("Start Time");
 		lblStartTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblStartTime.setBounds(377, 42, 86, 27);
+		lblStartTime.setBounds(377, 11, 86, 27);
 		AdminView.add(lblStartTime);
 		
 		JLabel lblEndTime = new JLabel("End Time");
 		lblEndTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEndTime.setBounds(555, 42, 79, 27);
+		lblEndTime.setBounds(552, 11, 79, 27);
 		AdminView.add(lblEndTime);
 		
 		JLabel lblStatus = new JLabel("Status");
 		lblStatus.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblStatus.setBounds(690, 42, 79, 27);
+		lblStatus.setBounds(690, 11, 79, 27);
 		AdminView.add(lblStatus);
+		
+		JLabel label = new JLabel("ID");
+		label.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label.setBounds(10, 202, 28, 27);
+		AdminView.add(label);
+		
+		JLabel label_1 = new JLabel("Project Name");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_1.setBounds(118, 202, 164, 27);
+		AdminView.add(label_1);
+		
+		JLabel label_2 = new JLabel("Total hours");
+		label_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_2.setBounds(246, 202, 79, 27);
+		AdminView.add(label_2);
+		
+		JLabel label_3 = new JLabel("Start Time");
+		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_3.setBounds(377, 202, 86, 27);
+		AdminView.add(label_3);
+		
+		JLabel label_4 = new JLabel("Status");
+		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_4.setBounds(573, 202, 79, 27);
+		AdminView.add(label_4);
+		
+
 	}
 
 
@@ -454,7 +512,34 @@ public class TerminaGUI extends JFrame {
 		
 	}
 
+	private void updateAdminJobTable() {  // Connect to the database and fetch the job information and create job objects with this data and insert them to arraylist which is used to populate the table
 
+		jobList = databaseConnect.getJobsAdmin();
+
+		tableModel3.setRowCount(jobList.size());
+		for (int row=0; row<jobList.size(); row++) {
+			currentJob = jobList.get(row);
+			AdminJobs.getModel().setValueAt(currentJob.getJobId(), row, 0);
+			AdminJobs.getModel().setValueAt(currentJob.getJobName(), row, 1);
+			
+			
+			int min2hour = currentJob.getJobTotal() / 60;
+			
+			
+			AdminJobs.getModel().setValueAt(min2hour, row, 2);
+			AdminJobs.getModel().setValueAt(currentJob.getStartTime(), row, 3);
+			if (currentJob.getJobFinishedStatus() == true) {
+                AdminJobs.getModel().setValueAt("Finished", row, 4);
+            } else {
+                AdminJobs.getModel().setValueAt("Ongoing", row, 4);
+            }
+
+		}
+		
+		
+		
+		
+	}
 
 
 

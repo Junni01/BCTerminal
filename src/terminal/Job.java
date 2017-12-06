@@ -46,7 +46,12 @@ public class Job {
 
         return this.jobName;
     }
+    
+    public int getJobTotal() {
 
+        return this.totalTime;
+    }
+    
 
     public boolean getJobFinishedStatus() {
 
