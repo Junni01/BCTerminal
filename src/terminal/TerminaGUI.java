@@ -65,20 +65,21 @@ public class TerminaGUI extends JFrame {
 		
 		
 		idField = new JTextField();
-		idField.setBounds(245, 192, 284, 90);
+		idField.setBounds(244, 175, 284, 90);
 		LoginScreen.add(idField);
 		idField.setHorizontalAlignment(SwingConstants.CENTER);
 		idField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		idField.setColumns(10);
 		
 		JLabel lblWelcome = new JLabel("Scan you ID card");
-		lblWelcome.setBounds(171, 42, 414, 124);
+		lblWelcome.setBounds(189, 40, 414, 124);
 		LoginScreen.add(lblWelcome);
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 33));
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		onGoingProjects = new JTable();   // This is table that is shown in the admin view which contains information about projects.
-		onGoingProjects.setBounds(10, 11, 759, 400);
+		onGoingProjects.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		onGoingProjects.setBounds(10, 71, 759, 340);
 		tableModel2 = new DefaultTableModel(
 				new Object[10][PROJCOL_COUNT],
 				new String[] {
@@ -87,23 +88,24 @@ public class TerminaGUI extends JFrame {
 			);
 			onGoingProjects.setModel(tableModel2);
 		AdminView.add(onGoingProjects);
-
-
-		JobTable = new JTable();   // This is the table that is shown in the worker view that contains job data.
-		JobTable.setShowGrid(false);
-		JobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
-		JobTable.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		JobTable.setBounds(15, 11, 754, 388);
+		
+		onGoingProjects.getColumnModel().getColumn(0).setPreferredWidth(10);
+		onGoingProjects.getColumnModel().getColumn(1).setPreferredWidth(120);
+		onGoingProjects.getColumnModel().getColumn(2).setPreferredWidth(20);
+		onGoingProjects.getColumnModel().getColumn(3).setPreferredWidth(120);
+		onGoingProjects.getColumnModel().getColumn(4).setPreferredWidth(120);
+		onGoingProjects.getColumnModel().getColumn(5).setPreferredWidth(20);
+		
+		
+		
+		
+		
 		tableModel = new DefaultTableModel(
 			new Object[10][COL_COUNT],
 			new String[] {
 				"ID", "Name", "Status", "Project", "StartTime"
 			}
 		);
-
-		JobTable.setModel(tableModel);
-		JobTable.removeColumn(JobTable.getColumnModel().getColumn(0));
-		WorkerScreen.add(JobTable);
 		
 		JButton btnEndJob = new JButton("End Job");
 		btnEndJob.addActionListener(new ActionListener() {
@@ -167,10 +169,47 @@ public class TerminaGUI extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		lblNewLabel.setBounds(227, 410, 542, 73);
+		lblNewLabel.setBounds(208, 410, 561, 73);
 		WorkerScreen.add(lblNewLabel);
-
 		
+		
+				JobTable = new JTable();
+				JobTable.setFillsViewportHeight(true);
+				JobTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+				JobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
+				JobTable.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				JobTable.setBounds(15, 35, 754, 364);
+				
+				JobTable.setModel(tableModel);
+				JobTable.removeColumn(JobTable.getColumnModel().getColumn(0));
+				WorkerScreen.add(JobTable);
+				
+				JobTable.getColumnModel().getColumn(0).setPreferredWidth(27);
+				JobTable.getColumnModel().getColumn(1).setPreferredWidth(27);
+				JobTable.getColumnModel().getColumn(2).setPreferredWidth(100);
+				JobTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+				
+				JLabel lblJobName = new JLabel("Job Name");
+				lblJobName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				lblJobName.setBounds(17, 11, 185, 24);
+				WorkerScreen.add(lblJobName);
+				
+				JLabel lblJobStatus = new JLabel("Job Status");
+				lblJobStatus.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				lblJobStatus.setBounds(166, 9, 185, 24);
+				WorkerScreen.add(lblJobStatus);
+				
+				JLabel lblAssociatedProject = new JLabel("Associated Project");
+				lblAssociatedProject.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				lblAssociatedProject.setBounds(320, 9, 185, 24);
+				WorkerScreen.add(lblAssociatedProject);
+				
+				JLabel lblStartTime_1 = new JLabel("Start Time");
+				lblStartTime_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				lblStartTime_1.setBounds(544, 9, 185, 24);
+				WorkerScreen.add(lblStartTime_1);
+
+	
 		
 		JButton btnNewButton = new JButton("Log In"); // when the ID is inputed into the login screen and log in is pressed the number is sent to the method for validation (000 automatically activates the admin view)
 		btnNewButton.addActionListener(new ActionListener() {
@@ -200,7 +239,7 @@ public class TerminaGUI extends JFrame {
 		});
 		
 		
-		btnNewButton.setBounds(259, 307, 241, 115);
+		btnNewButton.setBounds(276, 302, 241, 115);
 		LoginScreen.add(btnNewButton);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
@@ -271,6 +310,36 @@ public class TerminaGUI extends JFrame {
 		});
 		btnDeleteProject.setBounds(292, 471, 131, 44);
 		AdminView.add(btnDeleteProject);
+		
+		JLabel lblNewLabel_1 = new JLabel("ID");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(10, 42, 28, 27);
+		AdminView.add(lblNewLabel_1);
+		
+		JLabel lblProjectName = new JLabel("Project Name");
+		lblProjectName.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblProjectName.setBounds(80, 42, 164, 27);
+		AdminView.add(lblProjectName);
+		
+		JLabel lblTotalHours = new JLabel("Total hours");
+		lblTotalHours.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTotalHours.setBounds(261, 42, 79, 27);
+		AdminView.add(lblTotalHours);
+		
+		JLabel lblStartTime = new JLabel("Start Time");
+		lblStartTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblStartTime.setBounds(377, 42, 86, 27);
+		AdminView.add(lblStartTime);
+		
+		JLabel lblEndTime = new JLabel("End Time");
+		lblEndTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblEndTime.setBounds(555, 42, 79, 27);
+		AdminView.add(lblEndTime);
+		
+		JLabel lblStatus = new JLabel("Status");
+		lblStatus.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblStatus.setBounds(690, 42, 79, 27);
+		AdminView.add(lblStatus);
 	}
 
 
