@@ -1,6 +1,8 @@
 package terminal;
+/* This class is to do with the Workers object that is created in the main program and added to a worker array list.
 
 
+*/
 public class Worker {
 
     private int badgeNumber;

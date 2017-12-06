@@ -1,4 +1,10 @@
 package terminal;
+/*
+This class concerns the projects, It is similiar to the Job class and the description also hold true here.
+Getters to get the data and setters that are not used.
+
+ */
+
 
 public class Project {
 

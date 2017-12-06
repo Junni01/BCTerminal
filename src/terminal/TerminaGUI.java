@@ -27,32 +27,27 @@ public class TerminaGUI extends JFrame {
 	private static ArrayList<Worker> workers; // This arraylist is filled with the data from the workers table
 	private static int workerID; // this is the variable that stores the scanned ID card.
 	
-	private static ArrayList<Job> jobList;
+	private static ArrayList<Job> jobList; // These two arraylists hold the job and project objects which are used to populate the Jtables
 	private static Job currentJob;
 
 	private static ArrayList<Project> projectList;
 	private static Project currentProject;
 
 	
-	private static final int ID = 0;
-	private static final int NAME = 1;
-    private static final int TOTALHOURS= 2;
-    private static final int STARTTIME = 3;
-	private static final int COL_COUNT = 2;
-    private static final int PROJCOL_COUNT = 6;
 
-	private static JTable endedProjects;
+	private static final int COL_COUNT = 5; // These variables hold the amount of columns for the job and projects tables
+    private static final int PROJCOL_COUNT = 6;
 	
 	
 	
 	
 	public TerminaGUI() {
 		
-		
+		// This part is about setting up the Swing GUI, I used data cards to get different views.
 		
 		
 		super("Work Terminal");
-		setBounds(0,0,441,600);
+		setBounds(0,0,795,600);
 		setTitle("BCTerminal Log In");
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -70,20 +65,20 @@ public class TerminaGUI extends JFrame {
 		
 		
 		idField = new JTextField();
-		idField.setBounds(70, 184, 284, 90);
+		idField.setBounds(245, 192, 284, 90);
 		LoginScreen.add(idField);
 		idField.setHorizontalAlignment(SwingConstants.CENTER);
 		idField.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		idField.setColumns(10);
 		
 		JLabel lblWelcome = new JLabel("Scan you ID card");
-		lblWelcome.setBounds(10, 49, 414, 124);
+		lblWelcome.setBounds(171, 42, 414, 124);
 		LoginScreen.add(lblWelcome);
 		lblWelcome.setFont(new Font("Tahoma", Font.PLAIN, 33));
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		onGoingProjects = new JTable();
-		onGoingProjects.setBounds(10, 11, 414, 400);
+		onGoingProjects = new JTable();   // This is table that is shown in the admin view which contains information about projects.
+		onGoingProjects.setBounds(10, 11, 759, 400);
 		tableModel2 = new DefaultTableModel(
 				new Object[10][PROJCOL_COUNT],
 				new String[] {
@@ -94,18 +89,20 @@ public class TerminaGUI extends JFrame {
 		AdminView.add(onGoingProjects);
 
 
-		JobTable = new JTable();
+		JobTable = new JTable();   // This is the table that is shown in the worker view that contains job data.
 		JobTable.setShowGrid(false);
 		JobTable.setBorder(new LineBorder(new Color(0, 0, 0)));
 		JobTable.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		JobTable.setBounds(15, 11, 400, 330);
+		JobTable.setBounds(15, 11, 754, 388);
 		tableModel = new DefaultTableModel(
 			new Object[10][COL_COUNT],
 			new String[] {
-				"ID", "Name"
+				"ID", "Name", "Status", "Project", "StartTime"
 			}
 		);
+
 		JobTable.setModel(tableModel);
+		JobTable.removeColumn(JobTable.getColumnModel().getColumn(0));
 		WorkerScreen.add(JobTable);
 		
 		JButton btnEndJob = new JButton("End Job");
@@ -120,7 +117,7 @@ public class TerminaGUI extends JFrame {
 			}
 		});
 		btnEndJob.setFont(new Font("Tahoma", Font.BOLD, 25));
-		btnEndJob.setBounds(10, 438, 203, 64);
+		btnEndJob.setBounds(566, 487, 203, 64);
 		WorkerScreen.add(btnEndJob);
 		
 		JButton btnPauseJob = new JButton("Pause Job");
@@ -135,7 +132,7 @@ public class TerminaGUI extends JFrame {
 			}
 		});
 		btnPauseJob.setFont(new Font("Tahoma", Font.BOLD, 25));
-		btnPauseJob.setBounds(223, 361, 192, 64);
+		btnPauseJob.setBounds(279, 487, 192, 64);
 		WorkerScreen.add(btnPauseJob);
 
 		JButton btnResumeJob = new JButton("Resume Job");
@@ -149,7 +146,7 @@ public class TerminaGUI extends JFrame {
 			}
 		});
 		btnResumeJob.setFont(new Font("Tahoma", Font.BOLD, 25));
-		btnResumeJob.setBounds(223, 438, 192, 64);
+		btnResumeJob.setBounds(10, 487, 192, 64);
 		WorkerScreen.add(btnResumeJob);
 		
 		JButton btnStartJob = new JButton("Start Job");
@@ -165,8 +162,14 @@ public class TerminaGUI extends JFrame {
 			}
 		});
 		btnStartJob.setFont(new Font("Tahoma", Font.BOLD, 25));
-		btnStartJob.setBounds(10, 361, 203, 66);
+		btnStartJob.setBounds(10, 410, 192, 66);
 		WorkerScreen.add(btnStartJob);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNewLabel.setBounds(227, 410, 542, 73);
+		WorkerScreen.add(lblNewLabel);
+
 		
 		
 		JButton btnNewButton = new JButton("Log In"); // when the ID is inputed into the login screen and log in is pressed the number is sent to the method for validation (000 automatically activates the admin view)
@@ -181,10 +184,11 @@ public class TerminaGUI extends JFrame {
 					AdminView.setVisible(true);
 					
 				} else if (WorkerIdentification(idnumber)) {
-				
+				// If the badge number is found in the database the user is moved to worker screen
 					LoginScreen.setVisible(false);
 					WorkerScreen.setVisible(true);
 					updateJobTable(currentWorker);
+                    lblNewLabel.setText("Current worker: " + currentWorker.getName());
 					
 					
 				
@@ -196,12 +200,12 @@ public class TerminaGUI extends JFrame {
 		});
 		
 		
-		btnNewButton.setBounds(95, 298, 241, 115);
+		btnNewButton.setBounds(259, 307, 241, 115);
 		LoginScreen.add(btnNewButton);
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 40));
 		
 		JButton btnConf = new JButton("Conf");
-		btnConf.setBounds(340, 508, 75, 43);
+		btnConf.setBounds(694, 508, 75, 43);
 		LoginScreen.add(btnConf);
 		btnConf.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -221,7 +225,7 @@ public class TerminaGUI extends JFrame {
 				AdminView.setVisible(false);
 			}
 		});
-		btnLogOut.setBounds(289, 428, 126, 44);
+		btnLogOut.setBounds(643, 471, 126, 44);
 		AdminView.add(btnLogOut);
 		
 
@@ -234,7 +238,7 @@ public class TerminaGUI extends JFrame {
 				updateProjectTable();
 			}
 		});
-		btnNewButton_2.setBounds(10, 428, 131, 44);
+		btnNewButton_2.setBounds(10, 471, 131, 44);
 		AdminView.add(btnNewButton_2);
 		
 		JButton btnEndProject = new JButton("End project");
@@ -250,14 +254,14 @@ public class TerminaGUI extends JFrame {
 				
 			}
 		});
-		btnEndProject.setBounds(10, 485, 131, 44);
+		btnEndProject.setBounds(151, 471, 131, 44);
 		AdminView.add(btnEndProject);
 		
 		JButton btnDeleteProject = new JButton("Delete project");
 		btnDeleteProject.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-
+				// Delete selected projects from the admin view (and from the database)
                 String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
                 databaseConnect.deleteProject(selectedProject);
                 updateProjectTable();
@@ -265,7 +269,7 @@ public class TerminaGUI extends JFrame {
 				
 			}
 		});
-		btnDeleteProject.setBounds(151, 428, 131, 44);
+		btnDeleteProject.setBounds(292, 471, 131, 44);
 		AdminView.add(btnDeleteProject);
 	}
 
@@ -297,14 +301,27 @@ public class TerminaGUI extends JFrame {
 	
 	}
 	
-	private void updateJobTable(Worker currentWorker) {
+	private void updateJobTable(Worker currentWorker) {  // Connect to the database and fetch the job information and create job objects with this data and insert them to arraylist which is used to populate the table
 
 		jobList = databaseConnect.getJobs(currentWorker.getBadgeNumber());
+
 		tableModel.setRowCount(jobList.size());
-		for (int row=0; row<jobList.size(); row++){ 
+		for (int row=0; row<jobList.size(); row++) {
 			currentJob = jobList.get(row);
 			JobTable.getModel().setValueAt(currentJob.getJobId(), row, 0);
 			JobTable.getModel().setValueAt(currentJob.getJobName(), row, 1);
+            if (currentJob.getJobPauseStatus()) {
+                JobTable.getModel().setValueAt("Paused", row, 2);
+            } else {
+                JobTable.getModel().setValueAt(" ", row, 2);
+            }
+			String project = Integer.toString(currentJob.getJobId());
+            String asProject = databaseConnect.getAssociatedProject(project);
+			JobTable.getModel().setValueAt(asProject, row, 3);
+
+            JobTable.getModel().setValueAt(currentJob.getStartTime(), row, 4);
+
+
 
 		}
 		
@@ -318,7 +335,7 @@ public class TerminaGUI extends JFrame {
 
 
 
-	private void updateProjectTable() {
+	private void updateProjectTable() {  // Same stuff here but for the project table, we have an if clause to turn the boolean into different strings.
 
 		projectList = databaseConnect.getProjects();
 		tableModel2.setRowCount(projectList.size());
@@ -346,7 +363,7 @@ public class TerminaGUI extends JFrame {
 
 	}
 
-	private void addProject() {
+	private void addProject() {  // This method is used to add projects to the project table, it fires a popup that asks for the projects name and then creates a new project with that name.
         JTextField nameField = new JTextField(10);
         JPanel myPanel = new JPanel();
 
@@ -367,7 +384,7 @@ public class TerminaGUI extends JFrame {
 
     }
 
-	private void ConfigureConnection(){ // This method only asks for the credentials but does not change them, implemented in a future version.
+	private void ConfigureConnection(){ // This method asks for the server's credentials but does not change them, implemented in a future version.
 		JTextField URLfield = new JTextField(10);
 		JTextField USERNAMEfield = new JTextField(10);
 		JTextField PASSWORDfield = new JTextField(10);
