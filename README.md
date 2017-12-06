@@ -7,10 +7,12 @@ Simple program to track time used on manufacturing jobs and projects.
 
 How to use: 
 
-Download file and run on your preferred IDE 
+Download files and run on your preferred IDE 
 
-Install the needed jdnc files (mysql-connector-java-5.1.44-bin.jar)
+Install the needed jdbc files from https://dev.mysql.com/downloads/connector/j/ and set them up in your IDE.
+ 
+Login in with one of these ID numbers: '100', '200', '300', '400', '500' or access admin view with the ID number '000'.
 
-Login in with one of these ID numbers: '100', '200', '300', '400', '500' or access admin view with the ID number '000'.  
+'SqlDataBaseCreation.sql' script is provided for the creation of the test data.
 
 More info and screenshots on the Wiki page!
