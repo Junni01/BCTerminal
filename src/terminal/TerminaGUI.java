@@ -111,10 +111,21 @@ public class TerminaGUI extends JFrame {
 		btnEndJob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// End selected Job
+
+             try {
+
                 String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
                 databaseConnect.updateJobsStatus(selectedJob, 3);
                 updateJobTable(currentWorker);
-				
+
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                    JOptionPane.showMessageDialog(null, "Please select a job", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+
+
+
 				
 			}
 		});
@@ -126,10 +137,14 @@ public class TerminaGUI extends JFrame {
 		btnPauseJob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-                String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
-                databaseConnect.updateJobsStatus(selectedJob, 1);
-                updateJobTable(currentWorker);
+			    try {
+                    String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
+                    databaseConnect.updateJobsStatus(selectedJob, 1);
+                    updateJobTable(currentWorker);
+                } catch (ArrayIndexOutOfBoundsException e) {
 
+                    JOptionPane.showMessageDialog(null, "Please select a job", "Error", JOptionPane.INFORMATION_MESSAGE);
+                }
 
 			}
 		});
@@ -141,9 +156,17 @@ public class TerminaGUI extends JFrame {
 		btnResumeJob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-                String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
-                databaseConnect.updateJobsStatus(selectedJob, 2);
-                updateJobTable(currentWorker);
+                try {
+                    String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
+
+                    databaseConnect.updateJobsStatus(selectedJob, 2);
+
+                    updateJobTable(currentWorker);
+
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                        JOptionPane.showMessageDialog(null, "Please select a job", "Error", JOptionPane.INFORMATION_MESSAGE);
+                }
 				
 			}
 		});
@@ -155,12 +178,18 @@ public class TerminaGUI extends JFrame {
 		btnStartJob.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
-				databaseConnect.updateJobsStatus(selectedJob, 0);
-				updateJobTable(currentWorker);
-				
-				
-				
+
+			try {
+
+                String selectedJob = JobTable.getModel().getValueAt(JobTable.getSelectedRow(), 0).toString();
+                databaseConnect.updateJobsStatus(selectedJob, 0);
+                updateJobTable(currentWorker);
+
+            } catch (ArrayIndexOutOfBoundsException e) {
+
+                JOptionPane.showMessageDialog(null, "Please select a job", "Error", JOptionPane.INFORMATION_MESSAGE);
+            }
+
 			}
 		});
 		btnStartJob.setFont(new Font("Tahoma", Font.BOLD, 25));
@@ -214,26 +243,38 @@ public class TerminaGUI extends JFrame {
 		JButton btnNewButton = new JButton("Log In"); // when the ID is inputed into the login screen and log in is pressed the number is sent to the method for validation (000 automatically activates the admin view)
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				int idnumber = Integer.parseInt(idField.getText());
-				
+
+				String login = idField.getText();
+				idField.setText("");
+				try {
+
+					int idnumber = Integer.parseInt(login);
+
+
+
 				if (idnumber == 000) { // 000 id number activates the admin's view
 					updateProjectTable();
 					LoginScreen.setVisible(false);
 					AdminView.setVisible(true);
-					
+
 				} else if (WorkerIdentification(idnumber)) {
 				// If the badge number is found in the database the user is moved to worker screen
 					LoginScreen.setVisible(false);
 					WorkerScreen.setVisible(true);
 					updateJobTable(currentWorker);
                     lblNewLabel.setText("Current worker: " + currentWorker.getName());
-					
-					
-				
+
+
+
 				} else { // if no matching worker id is found from the table we get an error message.
-					
+
 					JOptionPane.showMessageDialog(null, "ID number not found", "Error", JOptionPane.INFORMATION_MESSAGE);
+				}
+
+
+				} catch (NumberFormatException e) {
+
+					JOptionPane.showMessageDialog(null, "Enter a three number ID code", "Error", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -273,8 +314,10 @@ public class TerminaGUI extends JFrame {
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// Add new projects from admin view
-				addProject();
+
+                addProject();
 				updateProjectTable();
+
 			}
 		});
 		btnNewButton_2.setBounds(10, 471, 131, 44);
@@ -285,11 +328,19 @@ public class TerminaGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				// End selected project from admin view.
+                try {
+                    String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
+                    databaseConnect.endProject(selectedProject);
+                    updateProjectTable();
 
-                String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
-                databaseConnect.endProject(selectedProject);
-                updateProjectTable();
-				
+                } catch (ArrayIndexOutOfBoundsException e) {
+
+                    JOptionPane.showMessageDialog(null, "Please select a project", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+
+
+
 				
 			}
 		});
@@ -299,13 +350,17 @@ public class TerminaGUI extends JFrame {
 		JButton btnDeleteProject = new JButton("Delete project");
 		btnDeleteProject.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+                try {
+                    // Delete selected projects from the admin view (and from the database)
+                    String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
+                    databaseConnect.deleteProject(selectedProject);
+                    updateProjectTable();
+                } catch (ArrayIndexOutOfBoundsException e) {
 
-				// Delete selected projects from the admin view (and from the database)
-                String selectedProject = onGoingProjects.getModel().getValueAt(onGoingProjects.getSelectedRow(), 0).toString();
-                databaseConnect.deleteProject(selectedProject);
-                updateProjectTable();
-				
-				
+                    JOptionPane.showMessageDialog(null, "Please select a project", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+                }
+
 			}
 		});
 		btnDeleteProject.setBounds(292, 471, 131, 44);
@@ -446,7 +501,7 @@ public class TerminaGUI extends JFrame {
                 JOptionPane.showMessageDialog(null, "New project added", "Info", JOptionPane.INFORMATION_MESSAGE);
 
             } else {
-                JOptionPane.showMessageDialog(null, "Project not added!", "Info", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Project name no compatible", "Info", JOptionPane.INFORMATION_MESSAGE);
 
             }
         }

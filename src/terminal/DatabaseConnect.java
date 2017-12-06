@@ -4,15 +4,15 @@ package terminal;
 
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.*;
+import java.sql.*;
 import java.util.ArrayList;
 
 /*
-This class handles all the database connectivity. It is used to gather the data to the 3 arraylists which consist of the three object types: workers, projects and jobs.
+This class handles all the database connectivity. It is used to gather the data to the 3 array lists which consist of the three object types: workers, projects and jobs.
+There is also functionality to change the credentials but it is disabled at the moment.
+
+There are also methods that update, delete and create data to/from relevant tables.
 
 
 
@@ -39,7 +39,7 @@ public class DatabaseConnect {
     private PreparedStatement endProject;
     private PreparedStatement selectAssociatedProject;
     private PreparedStatement findWorker = null;
-
+    private PreparedStatement getjobStatus = null;
 
 
     public DatabaseConnect() {
@@ -59,6 +59,12 @@ public class DatabaseConnect {
             endProject  = connection.prepareStatement("UPDATE project SET EndTime = NOW(), Finished = 1 WHERE ProjectID = ?");
 
             selectJobs = connection.prepareStatement("SELECT JobID, JobName, TotalTime, OnHoldTime, Paused, Finished, StartTime  FROM jobs WHERE Finished = 0");
+            getjobStatus = connection.prepareStatement("SELECT JobID, Paused, Finished, StartTime FROM JOBS WHERE JobID = ?");
+
+
+
+
+
             selectAssociatedProject = connection.prepareStatement("SELECT project.ProjName FROM projectjob INNER JOIN project ON projectjob.ProjectID = project.ProjectID WHERE JobID = ?");
 
             insertJob = connection.prepareStatement("INSERT INTO workers VALUES (NULL ,?,0,0,0,0, NULL, NULL, NULL)");
@@ -146,27 +152,54 @@ public class DatabaseConnect {
 
     public boolean updateJobsStatus(String JobID, int action) {   // This method is used to change the status of a job according to the button pressed. The variable action is used in the switch case to select the correct state change.
 
-        try {
 
+        ResultSet resultSet = null;
+        boolean started = true;
+        boolean paused = true;
+
+
+
+        try {
+            getjobStatus.setString(1, JobID);
+            resultSet = getjobStatus.executeQuery();
+            while (resultSet.next()) {
+
+             if(resultSet.getString("StartTime").equalsIgnoreCase("")) {
+                 started = false;
+             } else
+             {
+                 started = true;
+             }
+             paused = resultSet.getBoolean("Paused");
+
+
+            }
 
             switch (action) {
 
                 case 0:
+                    if (!started) {
+                        startJob.setString(1, JobID);
+                        startJob.executeUpdate();
 
-                    startJob.setString(1, JobID);
-                    startJob.executeUpdate();
+                    } else { JOptionPane.showMessageDialog(null, "Job is already started!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                         }
+
                     break;
 
                 case 1:
-
+                    if (!paused) {
                     pauseJob.setString(1, JobID);
                     pauseJob.executeUpdate();
+                    } else {  JOptionPane.showMessageDialog(null, "Job is already paused!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                    }
                     break;
 
                 case 2:
-
+                    if (paused) {
                     resumeJob.setString(1, JobID);
                     resumeJob.executeUpdate();
+                    } else { JOptionPane.showMessageDialog(null, "Job is not paused", "Error", JOptionPane.INFORMATION_MESSAGE);}
                     break;
                 case 3:
 
@@ -291,19 +324,23 @@ public class DatabaseConnect {
 
     public boolean addProject(String projectName)   // This method takes the project name which the user imputs in the new project popup and creates a new record to the project table in the database with this name.
     {
-        try
-        {
-            insertProject.setString(1, projectName);
 
-            insertProject.executeUpdate();
-        }
-        catch (SQLException sqlException)
-        {
-            sqlException.printStackTrace();
-        }
-        return true;
+        if (projectName.length() < 20 && projectName.length() > 0) {
+
+
+            try {
+                insertProject.setString(1, projectName);
+
+                insertProject.executeUpdate();
+            } catch (SQLException sqlException) {
+                sqlException.printStackTrace();
+            }
+
+            return true;
+
+        } else { return false; }
+
     }
-
     public void deleteProject(String projectId)  // This method deletes projects. I didn't intend to include this freature in the original plan but since I wanted the whole gallery of CRUD features I included it anyhow. Got to be careful with it lest you delete all the projects before they are finished.
     {
         try
