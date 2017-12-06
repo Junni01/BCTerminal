@@ -15,29 +15,30 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DatabaseConnect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/terminal/DatabaseConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-680">
-              <caret line="70" column="188" lean-forward="true" selection-start-line="70" selection-start-column="188" selection-end-line="70" selection-end-column="188" />
+            <state relative-caret-position="595">
+              <caret line="266" column="35" lean-forward="false" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="35" />
               <folding>
-                <marker date="1512571316084" expanded="true" signature="1952:2009" ph="SELECT Badge... workers" />
-                <marker date="1512571316084" expanded="true" signature="2069:2111" ph="INSERT INTO workers... " />
-                <marker date="1512571316084" expanded="true" signature="2175:2256" ph="SELECT Proje... project" />
-                <marker date="1512571316084" expanded="true" signature="2317:2368" ph="INSERT INTO project... " />
-                <marker date="1512571316084" expanded="true" signature="2429:2468" ph="DELETE FROM " />
-                <marker date="1512571316084" expanded="true" signature="2527:2595" ph="UPDATE proje... " />
-                <marker date="1512571316084" expanded="true" signature="2654:2757" ph="SELECT JobID... jobs" />
-                <marker date="1512571316084" expanded="true" signature="2817:2884" ph="SELECT JobID... JOBS" />
-                <marker date="1512571316084" expanded="true" signature="2945:3040" ph="SELECT TIMES... jobs" />
-                <marker date="1512571316084" expanded="true" signature="3103:3182" ph="SELECT TIMES... jobs" />
-                <marker date="1512571316084" expanded="true" signature="3259:3377" ph="SELECT proje... projectjob" />
-                <marker date="1512571316084" expanded="true" signature="3436:3498" ph="INSERT INTO workers... " />
-                <marker date="1512571316084" expanded="true" signature="3556:3605" ph="UPDATE jobs " />
-                <marker date="1512571316084" expanded="true" signature="3661:3722" ph="UPDATE jobs " />
-                <marker date="1512571316084" expanded="true" signature="3779:3895" ph="UPDATE jobs " />
-                <marker date="1512571316084" expanded="true" signature="3949:4090" ph="UPDATE jobs " />
-                <marker date="1512571316084" expanded="true" signature="4150:4292" ph="SELECT worke... workerjob" />
+                <marker date="1512576470611" expanded="true" signature="2005:2062" ph="SELECT Badge... workers" />
+                <marker date="1512576470611" expanded="true" signature="2122:2164" ph="INSERT INTO workers... " />
+                <marker date="1512576470611" expanded="true" signature="2228:2309" ph="SELECT Proje... project" />
+                <marker date="1512576470611" expanded="true" signature="2370:2421" ph="INSERT INTO project... " />
+                <marker date="1512576470611" expanded="true" signature="2482:2521" ph="DELETE FROM " />
+                <marker date="1512576470611" expanded="true" signature="2580:2648" ph="UPDATE proje... " />
+                <marker date="1512576470611" expanded="true" signature="2707:2810" ph="SELECT JobID... jobs" />
+                <marker date="1512576470611" expanded="true" signature="2873:2957" ph="SELECT JobID... jobs" />
+                <marker date="1512576470611" expanded="true" signature="3043:3110" ph="SELECT JobID... JOBS" />
+                <marker date="1512576470611" expanded="true" signature="3171:3266" ph="SELECT TIMES... jobs" />
+                <marker date="1512576470611" expanded="true" signature="3329:3408" ph="SELECT TIMES... jobs" />
+                <marker date="1512576470611" expanded="true" signature="3485:3603" ph="SELECT proje... projectjob" />
+                <marker date="1512576470611" expanded="true" signature="3662:3724" ph="INSERT INTO workers... " />
+                <marker date="1512576470611" expanded="true" signature="3782:3831" ph="UPDATE jobs " />
+                <marker date="1512576470611" expanded="true" signature="3887:3948" ph="UPDATE jobs " />
+                <marker date="1512576470611" expanded="true" signature="4005:4121" ph="UPDATE jobs " />
+                <marker date="1512576470611" expanded="true" signature="4175:4316" ph="UPDATE jobs " />
+                <marker date="1512576470611" expanded="true" signature="4376:4518" ph="SELECT worke... workerjob" />
               </folding>
             </state>
           </provider>
@@ -47,8 +48,14 @@
         <entry file="file://$PROJECT_DIR$/src/terminal/Job.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1071">
-              <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-              <folding />
+              <caret line="68" column="5" lean-forward="false" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+              <folding>
+                <marker date="1512572570171" expanded="true" signature="1363:1401" ph="{...}" />
+                <marker date="1512572570171" expanded="true" signature="1442:1478" ph="{...}" />
+                <marker date="1512572570171" expanded="true" signature="1513:1552" ph="{...}" />
+                <marker date="1512572570171" expanded="true" signature="1603:1729" ph="{...}" />
+                <marker date="1512572570171" expanded="true" signature="1774:1895" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,17 +64,17 @@
         <entry file="file://$PROJECT_DIR$/src/terminal/Project.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
-              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TerminaGUI.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TerminaGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="761">
-              <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+            <state relative-caret-position="3214">
+              <caret line="548" column="52" lean-forward="false" selection-start-line="548" selection-start-column="52" selection-end-line="548" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -76,7 +83,7 @@
       <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/terminal/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="34">
               <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
@@ -95,6 +102,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>terminal</find>
+      <find>adminjobs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -123,8 +131,8 @@
         <option value="$PROJECT_DIR$/src/terminal/Project.java" />
         <option value="$PROJECT_DIR$/src/terminal/Worker.java" />
         <option value="$PROJECT_DIR$/src/terminal/Job.java" />
-        <option value="$PROJECT_DIR$/src/terminal/TerminaGUI.java" />
         <option value="$PROJECT_DIR$/src/terminal/DatabaseConnect.java" />
+        <option value="$PROJECT_DIR$/src/terminal/TerminaGUI.java" />
       </list>
     </option>
   </component>
@@ -155,7 +163,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -179,7 +187,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -469,11 +477,12 @@
       <workItem from="1512541006261" duration="1991000" />
       <workItem from="1512550942970" duration="8859000" />
       <workItem from="1512562775564" duration="7376000" />
+      <workItem from="1512576253671" duration="474000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50522000" />
+    <option name="totallyTimeSpent" value="50996000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -572,58 +581,65 @@
     <entry file="file://$PROJECT_DIR$/src/terminal/Job.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
-          <caret line="63" column="5" lean-forward="false" selection-start-line="63" selection-start-column="5" selection-end-line="63" selection-end-column="5" />
-          <folding />
+          <caret line="68" column="5" lean-forward="false" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+          <folding>
+            <marker date="1512572570171" expanded="true" signature="1363:1401" ph="{...}" />
+            <marker date="1512572570171" expanded="true" signature="1442:1478" ph="{...}" />
+            <marker date="1512572570171" expanded="true" signature="1513:1552" ph="{...}" />
+            <marker date="1512572570171" expanded="true" signature="1603:1729" ph="{...}" />
+            <marker date="1512572570171" expanded="true" signature="1774:1895" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/Project.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="34">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="761">
-          <caret line="144" column="0" lean-forward="true" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/terminal/DatabaseConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-680">
-          <caret line="70" column="188" lean-forward="true" selection-start-line="70" selection-start-column="188" selection-end-line="70" selection-end-column="188" />
+        <state relative-caret-position="595">
+          <caret line="266" column="35" lean-forward="false" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="35" />
           <folding>
-            <marker date="1512571316084" expanded="true" signature="1952:2009" ph="SELECT Badge... workers" />
-            <marker date="1512571316084" expanded="true" signature="2069:2111" ph="INSERT INTO workers... " />
-            <marker date="1512571316084" expanded="true" signature="2175:2256" ph="SELECT Proje... project" />
-            <marker date="1512571316084" expanded="true" signature="2317:2368" ph="INSERT INTO project... " />
-            <marker date="1512571316084" expanded="true" signature="2429:2468" ph="DELETE FROM " />
-            <marker date="1512571316084" expanded="true" signature="2527:2595" ph="UPDATE proje... " />
-            <marker date="1512571316084" expanded="true" signature="2654:2757" ph="SELECT JobID... jobs" />
-            <marker date="1512571316084" expanded="true" signature="2817:2884" ph="SELECT JobID... JOBS" />
-            <marker date="1512571316084" expanded="true" signature="2945:3040" ph="SELECT TIMES... jobs" />
-            <marker date="1512571316084" expanded="true" signature="3103:3182" ph="SELECT TIMES... jobs" />
-            <marker date="1512571316084" expanded="true" signature="3259:3377" ph="SELECT proje... projectjob" />
-            <marker date="1512571316084" expanded="true" signature="3436:3498" ph="INSERT INTO workers... " />
-            <marker date="1512571316084" expanded="true" signature="3556:3605" ph="UPDATE jobs " />
-            <marker date="1512571316084" expanded="true" signature="3661:3722" ph="UPDATE jobs " />
-            <marker date="1512571316084" expanded="true" signature="3779:3895" ph="UPDATE jobs " />
-            <marker date="1512571316084" expanded="true" signature="3949:4090" ph="UPDATE jobs " />
-            <marker date="1512571316084" expanded="true" signature="4150:4292" ph="SELECT worke... workerjob" />
+            <marker date="1512576470611" expanded="true" signature="2005:2062" ph="SELECT Badge... workers" />
+            <marker date="1512576470611" expanded="true" signature="2122:2164" ph="INSERT INTO workers... " />
+            <marker date="1512576470611" expanded="true" signature="2228:2309" ph="SELECT Proje... project" />
+            <marker date="1512576470611" expanded="true" signature="2370:2421" ph="INSERT INTO project... " />
+            <marker date="1512576470611" expanded="true" signature="2482:2521" ph="DELETE FROM " />
+            <marker date="1512576470611" expanded="true" signature="2580:2648" ph="UPDATE proje... " />
+            <marker date="1512576470611" expanded="true" signature="2707:2810" ph="SELECT JobID... jobs" />
+            <marker date="1512576470611" expanded="true" signature="2873:2957" ph="SELECT JobID... jobs" />
+            <marker date="1512576470611" expanded="true" signature="3043:3110" ph="SELECT JobID... JOBS" />
+            <marker date="1512576470611" expanded="true" signature="3171:3266" ph="SELECT TIMES... jobs" />
+            <marker date="1512576470611" expanded="true" signature="3329:3408" ph="SELECT TIMES... jobs" />
+            <marker date="1512576470611" expanded="true" signature="3485:3603" ph="SELECT proje... projectjob" />
+            <marker date="1512576470611" expanded="true" signature="3662:3724" ph="INSERT INTO workers... " />
+            <marker date="1512576470611" expanded="true" signature="3782:3831" ph="UPDATE jobs " />
+            <marker date="1512576470611" expanded="true" signature="3887:3948" ph="UPDATE jobs " />
+            <marker date="1512576470611" expanded="true" signature="4005:4121" ph="UPDATE jobs " />
+            <marker date="1512576470611" expanded="true" signature="4175:4316" ph="UPDATE jobs " />
+            <marker date="1512576470611" expanded="true" signature="4376:4518" ph="SELECT worke... workerjob" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/terminal/TerminaGUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3214">
+          <caret line="548" column="52" lean-forward="false" selection-start-line="548" selection-start-column="52" selection-end-line="548" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -236,26 +236,26 @@ public class TerminaGUI extends JFrame {
 		AdminJobs.setBounds(10, 229, 759, 219);
 		
 		tableModel3 = new DefaultTableModel(
-				new Object[10][5],
+				new Object[10][6],
 				new String[] {
-					"ID", "Name", "Total Time", "StartTime", "End Time"
+					"ID", "Name", "Total Time", "StartTime", "End Time", "Associated Project"
 				}
 			);
 		AdminJobs.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
+				{null, null, null, null, null, null},
 			},
 			new String[] {
-				"ID", "Name", "Total Time", "StartTime", "End Time"
+				"ID", "Name", "Total Time", "StartTime", "End Time", "Associated Project"
 			}
 		));
 		AdminJobs.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -270,7 +270,9 @@ public class TerminaGUI extends JFrame {
 		AdminJobs.getColumnModel().getColumn(3).setPreferredWidth(190);
 		AdminJobs.getColumnModel().getColumn(3).setMinWidth(190);
 		AdminJobs.getColumnModel().getColumn(3).setMaxWidth(190);
-		AdminJobs.getColumnModel().getColumn(4).setPreferredWidth(140);
+		AdminJobs.getColumnModel().getColumn(4).setPreferredWidth(190);
+		AdminJobs.getColumnModel().getColumn(4).setMinWidth(190);
+		AdminJobs.getColumnModel().getColumn(4).setMaxWidth(190);
 		AdminJobs.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 		
 
@@ -496,10 +498,15 @@ public class TerminaGUI extends JFrame {
 		label_3.setBounds(309, 202, 86, 27);
 		AdminView.add(label_3);
 		
-		JLabel label_4 = new JLabel("Status");
-		label_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		label_4.setBounds(499, 202, 79, 27);
-		AdminView.add(label_4);
+		JLabel lblProject = new JLabel("Project");
+		lblProject.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblProject.setBounds(499, 202, 79, 27);
+		AdminView.add(lblProject);
+		
+		JLabel label_1 = new JLabel("Status");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		label_1.setBounds(690, 202, 79, 27);
+		AdminView.add(label_1);
 		
 
 	}
@@ -571,16 +578,20 @@ public class TerminaGUI extends JFrame {
 			AdminJobs.getModel().setValueAt(currentJob.getJobId(), row, 0);
 			AdminJobs.getModel().setValueAt(currentJob.getJobName(), row, 1);
 			
-			
 			int min2hour = currentJob.getJobTotal() / 60;
-			
-			
+					
 			AdminJobs.getModel().setValueAt(min2hour, row, 2);
 			AdminJobs.getModel().setValueAt(currentJob.getStartTime(), row, 3);
+			
+			String project = Integer.toString(currentJob.getJobId());
+			String asProject = databaseConnect.getAssociatedProject(project);
+			AdminJobs.getModel().setValueAt(asProject, row, 4);
+			
+			AdminJobs.getModel().setValueAt(asProject, row, 5);
 			if (currentJob.getJobFinishedStatus() == true) {
-                AdminJobs.getModel().setValueAt("Finished", row, 4);
+                AdminJobs.getModel().setValueAt("Finished", row, 5);
             } else {
-                AdminJobs.getModel().setValueAt("Ongoing", row, 4);
+                AdminJobs.getModel().setValueAt("Ongoing", row, 5);
             }
 
 		}

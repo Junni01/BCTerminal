@@ -265,7 +265,6 @@ public class DatabaseConnect {
     public ArrayList<Job> getJobs(int currentWorkerID) {  // This method gathers the job data to an array list, it accepts the current worker's badge number so jobs associated with a certain worker can be shown but this feature is not yet implemented
         ArrayList<Job> results = null;
         ResultSet resultSet = null;
-        ResultSet resultSet2 = null;
 
         try
         {
